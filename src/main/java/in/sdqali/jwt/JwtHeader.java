@@ -1,9 +1,12 @@
 package in.sdqali.jwt;
 
-import java.util.Map;
+import static com.google.common.collect.ImmutableMap.of;
 
 public class JwtHeader extends JwtPart {
-    public JwtHeader(Map<String, String> values) {
-        super(values);
+    private static final String TYPE = "typ";
+    private static final String ALG = "alg";
+
+    public JwtHeader(Algorithm alg) {
+        super(of(TYPE, "JWT", ALG, alg.toString()));
     }
 }
