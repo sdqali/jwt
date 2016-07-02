@@ -2,6 +2,7 @@ package in.sdqali.jwt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableMap;
 
 import java.util.Base64;
 import java.util.Map;
@@ -19,6 +20,10 @@ public class JwtPart {
         ObjectMapper objectMapper = new ObjectMapper();
         byte[] valueAsBytes = objectMapper.writeValueAsBytes(values);
         byte[] encodedValue = Base64.getEncoder().encode(valueAsBytes);
-        return new String(encodedValue, UTF_8);
+        return new String(encodedValue, UTF_8).replaceAll("\n", "");
+    }
+
+    protected void merge(ImmutableMap<String, String> data) {
+        values.putAll(data);
     }
 }
