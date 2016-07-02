@@ -1,8 +1,7 @@
 package in.sdqali.jwt;
 
-import com.google.common.collect.ImmutableMap;
-
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.google.common.collect.ImmutableMap.of;
 
@@ -14,7 +13,7 @@ public class JwtPayload extends JwtPart {
         super(new HashMap(of(ISSUER, issuer, EXPIRY, String.valueOf(expiry))));
     }
 
-    public void addData(ImmutableMap<String, String> data) {
+    public void addData(Map<String, String> data) {
         super.merge(data);
     }
 }
